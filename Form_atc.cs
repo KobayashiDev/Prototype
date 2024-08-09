@@ -7,7 +7,7 @@ namespace CheapDeals.comLTD
     public partial class Form_atc : Form
     {
         private product_detail previousForm;
-        private DataTable cartTable;  // DataTable to store cart items
+        public DataTable cartTable;  // DataTable to store cart items
 
         public Form_atc(product_detail formProductDetail)
         {

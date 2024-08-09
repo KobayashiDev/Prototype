@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -7,9 +8,11 @@ namespace CheapDeals.comLTD
 {
     public partial class Form_Credit : Form
     {
+        private DataTable cartTable;
         public Form_Credit()
         {
             InitializeComponent();
+            
         }
 
         private void bt_proceed_Click_1(object sender, EventArgs e)
@@ -23,8 +26,8 @@ namespace CheapDeals.comLTD
 
                 // Process the "encrypted" card number (e.g., save to database, send to payment gateway, etc.)
                 MessageBox.Show("Payment processed successfully!\nEncrypted Card Number: " + encryptedCardNumber);
-                Form_OrderConfirm form_OrderConfirm = new Form_OrderConfirm();
-                form_OrderConfirm.ShowDialog();
+                Form_Billing form_Billing = new Form_Billing(cartTable);
+                form_Billing.ShowDialog();
             }
             this.Hide();
         }

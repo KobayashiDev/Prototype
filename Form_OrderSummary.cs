@@ -62,24 +62,27 @@ namespace CheapDeals.comLTD
                 // Check which radio button is selected
                 if (rb_phone.Checked)
                 {
-                    // Handle phone payment option
                     MessageBox.Show("Phone payment option selected. Proceeding with phone payment...");
-                    // Add logic to handle phone payment here
+                    
+
                 }
                 else if (rb_credit.Checked)
                 {
-                    // Handle credit card payment option
                     MessageBox.Show("Credit card payment option selected. Proceeding with credit card payment...");
 
+                    // Pass the cart data to Form_Billing
                     Form_Credit form_Credit = new Form_Credit();
                     form_Credit.ShowDialog();
-                    // Add logic to handle credit card payment here
                 }
                 else
                 {
-                    // No payment option selected
                     MessageBox.Show("Please select a payment option.", "No Payment Option Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+
+                // Pass the DataTable to Form_Billing and show it
+                Form_Billing formBilling = new Form_Billing(previousForm.cartTable); // Assuming CartTable holds the DataTable
+                formBilling.ShowDialog();
+
                 this.Hide();
             }
             catch (Exception ex)
@@ -87,6 +90,7 @@ namespace CheapDeals.comLTD
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
     }
 }
