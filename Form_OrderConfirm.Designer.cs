@@ -49,7 +49,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::CheapDeals.comLTD.Properties.Resources.icons8_success_144;
-            this.pictureBox1.Location = new System.Drawing.Point(75, 66);
+            this.pictureBox1.Location = new System.Drawing.Point(102, 87);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(143, 140);
             this.pictureBox1.TabIndex = 0;
@@ -59,7 +59,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Rockwell", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(61, 229);
+            this.label1.Location = new System.Drawing.Point(88, 250);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(182, 23);
             this.label1.TabIndex = 12;
@@ -69,7 +69,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(290, 556);
+            this.ClientSize = new System.Drawing.Size(322, 634);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox1);

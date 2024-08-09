@@ -80,6 +80,12 @@
     <Compile Include="Form_atc.Designer.cs">
       <DependentUpon>Form_atc.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_Billing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Billing.Designer.cs">
+      <DependentUpon>Form_Billing.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_Credit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,11 +151,17 @@
     <EmbeddedResource Include="Form_atc.resx">
       <DependentUpon>Form_atc.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form_Billing.resx">
+      <DependentUpon>Form_Billing.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_Credit.resx">
       <DependentUpon>Form_Credit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_OrderConfirm.resx">
       <DependentUpon>Form_OrderConfirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_OrderSummary.resx">
+      <DependentUpon>Form_OrderSummary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="main_system.resx">
       <DependentUpon>main_system.cs</DependentUpon>
@@ -250,6 +262,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>CheapDeals.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\icons8-bill-50.png" />
+    <None Include="Resources\icons8-bill-100.png" />
+    <None Include="Resources\icons8-order-50.png" />
+    <None Include="Resources\icons8-order-64.png" />
+    <None Include="Resources\icons8-phone-20.png" />
     <None Include="Resources\icons8-success-144.png" />
     <None Include="Resources\icons8-left-arrow-20.png" />
     <None Include="Resources\icons8-arrow-20.png" />

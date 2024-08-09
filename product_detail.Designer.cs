@@ -59,20 +59,22 @@
             this.label1.AutoSize = true;
             this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(401, 0);
+            this.label1.Location = new System.Drawing.Point(301, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(22, 24);
+            this.label1.Size = new System.Drawing.Size(18, 19);
             this.label1.TabIndex = 0;
             this.label1.Text = "X";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 2);
+            this.label2.Location = new System.Drawing.Point(9, 2);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(115, 21);
+            this.label2.Size = new System.Drawing.Size(94, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "Product Detail";
             // 
@@ -91,114 +93,119 @@
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Location = new System.Drawing.Point(16, 46);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Location = new System.Drawing.Point(12, 37);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(397, 452);
+            this.panel1.Size = new System.Drawing.Size(298, 367);
             this.panel1.TabIndex = 2;
             // 
             // tb_description
             // 
-            this.tb_description.Location = new System.Drawing.Point(117, 329);
-            this.tb_description.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tb_description.Location = new System.Drawing.Point(88, 267);
+            this.tb_description.Margin = new System.Windows.Forms.Padding(2);
             this.tb_description.Name = "tb_description";
-            this.tb_description.Size = new System.Drawing.Size(247, 93);
+            this.tb_description.Size = new System.Drawing.Size(186, 76);
             this.tb_description.TabIndex = 11;
             this.tb_description.Text = "";
             // 
             // tb_date
             // 
-            this.tb_date.Location = new System.Drawing.Point(100, 286);
-            this.tb_date.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tb_date.Location = new System.Drawing.Point(75, 232);
+            this.tb_date.Margin = new System.Windows.Forms.Padding(2);
             this.tb_date.Name = "tb_date";
-            this.tb_date.Size = new System.Drawing.Size(75, 22);
+            this.tb_date.Size = new System.Drawing.Size(57, 20);
             this.tb_date.TabIndex = 10;
             // 
             // tb_price
             // 
-            this.tb_price.Location = new System.Drawing.Point(100, 240);
-            this.tb_price.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tb_price.Location = new System.Drawing.Point(75, 195);
+            this.tb_price.Margin = new System.Windows.Forms.Padding(2);
             this.tb_price.Name = "tb_price";
-            this.tb_price.Size = new System.Drawing.Size(201, 22);
+            this.tb_price.Size = new System.Drawing.Size(152, 20);
             this.tb_price.TabIndex = 9;
             // 
             // tb_type
             // 
-            this.tb_type.Location = new System.Drawing.Point(100, 190);
-            this.tb_type.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tb_type.Location = new System.Drawing.Point(75, 154);
+            this.tb_type.Margin = new System.Windows.Forms.Padding(2);
             this.tb_type.Name = "tb_type";
-            this.tb_type.Size = new System.Drawing.Size(201, 22);
+            this.tb_type.Size = new System.Drawing.Size(152, 20);
             this.tb_type.TabIndex = 8;
             // 
             // tb_name
             // 
-            this.tb_name.Location = new System.Drawing.Point(100, 145);
-            this.tb_name.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tb_name.Location = new System.Drawing.Point(75, 118);
+            this.tb_name.Margin = new System.Windows.Forms.Padding(2);
             this.tb_name.Name = "tb_name";
-            this.tb_name.Size = new System.Drawing.Size(201, 22);
+            this.tb_name.Size = new System.Drawing.Size(152, 20);
             this.tb_name.TabIndex = 7;
             // 
             // box_image
             // 
-            this.box_image.Location = new System.Drawing.Point(111, 30);
-            this.box_image.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.box_image.Location = new System.Drawing.Point(83, 24);
+            this.box_image.Margin = new System.Windows.Forms.Padding(2);
             this.box_image.Name = "box_image";
-            this.box_image.Size = new System.Drawing.Size(171, 100);
+            this.box_image.Size = new System.Drawing.Size(128, 81);
             this.box_image.TabIndex = 6;
             this.box_image.TabStop = false;
-            this.box_image.Click += new System.EventHandler(this.box_image_Click);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(33, 340);
+            this.label9.Location = new System.Drawing.Point(25, 276);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(78, 16);
+            this.label9.Size = new System.Drawing.Size(63, 13);
             this.label9.TabIndex = 5;
             this.label9.Text = "Description:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(33, 290);
+            this.label8.Location = new System.Drawing.Point(25, 236);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(39, 16);
+            this.label8.Size = new System.Drawing.Size(33, 13);
             this.label8.TabIndex = 4;
             this.label8.Text = "Date:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(33, 246);
+            this.label7.Location = new System.Drawing.Point(25, 200);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(41, 16);
+            this.label7.Size = new System.Drawing.Size(34, 13);
             this.label7.TabIndex = 3;
             this.label7.Text = "Price:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(33, 194);
+            this.label6.Location = new System.Drawing.Point(25, 158);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 16);
+            this.label6.Size = new System.Drawing.Size(34, 13);
             this.label6.TabIndex = 2;
             this.label6.Text = "Type:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(33, 148);
+            this.label5.Location = new System.Drawing.Point(25, 120);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 16);
+            this.label5.Size = new System.Drawing.Size(38, 13);
             this.label5.TabIndex = 1;
             this.label5.Text = "Name:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(169, 11);
+            this.label4.Location = new System.Drawing.Point(127, 9);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(45, 16);
+            this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 0;
             this.label4.Text = "image";
             // 
@@ -206,20 +213,19 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 501);
+            this.label3.Location = new System.Drawing.Point(9, 407);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(133, 21);
+            this.label3.Size = new System.Drawing.Size(108, 17);
             this.label3.TabIndex = 2;
             this.label3.Text = "Related Package";
             // 
             // list_package
             // 
             this.list_package.FormattingEnabled = true;
-            this.list_package.ItemHeight = 16;
-            this.list_package.Location = new System.Drawing.Point(16, 526);
-            this.list_package.Margin = new System.Windows.Forms.Padding(4);
+            this.list_package.Location = new System.Drawing.Point(12, 427);
             this.list_package.Name = "list_package";
-            this.list_package.Size = new System.Drawing.Size(396, 196);
+            this.list_package.Size = new System.Drawing.Size(298, 160);
             this.list_package.TabIndex = 3;
             this.list_package.SelectedIndexChanged += new System.EventHandler(this.list_package_SelectedIndexChanged);
             // 
@@ -227,10 +233,9 @@
             // 
             this.lb_back.AutoSize = true;
             this.lb_back.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lb_back.Location = new System.Drawing.Point(16, 28);
-            this.lb_back.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lb_back.Location = new System.Drawing.Point(12, 23);
             this.lb_back.Name = "lb_back";
-            this.lb_back.Size = new System.Drawing.Size(68, 16);
+            this.lb_back.Size = new System.Drawing.Size(57, 13);
             this.lb_back.TabIndex = 4;
             this.lb_back.Text = "Turn Back";
             this.lb_back.Click += new System.EventHandler(this.lb_back_Click);
@@ -239,9 +244,10 @@
             // 
             this.button1.BackColor = System.Drawing.Color.LightSeaGreen;
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(16, 726);
+            this.button1.Location = new System.Drawing.Point(12, 590);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 57);
+            this.button1.Size = new System.Drawing.Size(72, 46);
             this.button1.TabIndex = 5;
             this.button1.Text = "Chua biet";
             this.button1.UseVisualStyleBackColor = false;
@@ -250,9 +256,10 @@
             // 
             this.bt2.BackColor = System.Drawing.Color.LightSeaGreen;
             this.bt2.ForeColor = System.Drawing.Color.White;
-            this.bt2.Location = new System.Drawing.Point(116, 726);
+            this.bt2.Location = new System.Drawing.Point(87, 590);
+            this.bt2.Margin = new System.Windows.Forms.Padding(2);
             this.bt2.Name = "bt2";
-            this.bt2.Size = new System.Drawing.Size(102, 57);
+            this.bt2.Size = new System.Drawing.Size(76, 46);
             this.bt2.TabIndex = 6;
             this.bt2.Text = "Add to Cart";
             this.bt2.UseVisualStyleBackColor = false;
@@ -262,9 +269,10 @@
             // 
             this.button3.BackColor = System.Drawing.Color.Red;
             this.button3.ForeColor = System.Drawing.Color.FloralWhite;
-            this.button3.Location = new System.Drawing.Point(224, 726);
+            this.button3.Location = new System.Drawing.Point(168, 590);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(188, 57);
+            this.button3.Size = new System.Drawing.Size(141, 46);
             this.button3.TabIndex = 7;
             this.button3.Text = "Buy Now";
             this.button3.UseVisualStyleBackColor = false;
@@ -273,16 +281,17 @@
             // cart
             // 
             this.cart.Image = global::CheapDeals.comLTD.Properties.Resources.cart12;
-            this.cart.Location = new System.Drawing.Point(334, 5);
+            this.cart.Location = new System.Drawing.Point(239, 2);
+            this.cart.Margin = new System.Windows.Forms.Padding(2);
             this.cart.Name = "cart";
-            this.cart.Size = new System.Drawing.Size(46, 39);
+            this.cart.Size = new System.Drawing.Size(47, 32);
             this.cart.TabIndex = 12;
             this.cart.UseVisualStyleBackColor = true;
             this.cart.Click += new System.EventHandler(this.bt_cart_Click);
             // 
             // product_detail
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Menu;
             this.Controls.Add(this.cart);
@@ -295,10 +304,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "product_detail";
-            this.Size = new System.Drawing.Size(427, 786);
-            this.Load += new System.EventHandler(this.product_detail_Load);
+            this.Size = new System.Drawing.Size(320, 639);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.box_image)).EndInit();

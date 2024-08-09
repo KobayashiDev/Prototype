@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Runtime.Remoting.Contexts;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace CheapDeals.comLTD
 {
@@ -19,11 +12,26 @@ namespace CheapDeals.comLTD
         private SqlConnection connect = new SqlConnection(Database_config.ConnectionString);
         public int product_id;
         private Form_atc formAtc;
+        private DataTable cartTable;
+
+        public product_detail(Form_atc formAtcInstance)
+        {
+            InitializeComponent();
+            formAtc = formAtcInstance;
+        }
         public product_detail()
         {
             InitializeComponent();
             lb_back.Visible = false;
             formAtc = null;
+
+            // Initialize the temporary cart table
+            cartTable = new DataTable();
+            cartTable.Columns.Add("Name", typeof(string));
+            cartTable.Columns.Add("Type", typeof(string));
+            cartTable.Columns.Add("Price", typeof(string));
+            cartTable.Columns.Add("DebutDate", typeof(string));
+            cartTable.Columns.Add("Description", typeof(string));
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -33,9 +41,7 @@ namespace CheapDeals.comLTD
 
         public void load_product_detail(int id, string type)
         {
-            // Connection string (replace with your actual connection string)
             string connectionString = Database_config.ConnectionString;
-
 
             try
             {
@@ -49,7 +55,7 @@ namespace CheapDeals.comLTD
                         query = "SELECT name, 'package' AS type, price, debut_date, description, NULL AS image FROM Package WHERE package_id = @id";
                         list_package.Visible = false;
                         label3.Visible = false;
-                        label2.Text = "Packge Detail";
+                        label2.Text = "Package Detail";
                     }
                     else
                     {
@@ -73,7 +79,6 @@ namespace CheapDeals.comLTD
                                 tb_date.Text = reader["debut_date"].ToString();
                                 tb_description.Text = reader["description"].ToString();
 
-                                // Load and display the image if it's a product
                                 if (type != "package")
                                 {
                                     string imagePath = reader["image"].ToString();
@@ -102,11 +107,11 @@ namespace CheapDeals.comLTD
                     if (type != "package")
                     {
                         string query_related_package = @"
-                    SELECT p.name 
-                    FROM Product po 
-                    JOIN Package_Product pp ON po.product_id = pp.product_id
-                    JOIN Package p ON pp.package_id = p.package_id
-                    WHERE po.product_id = @id";
+                            SELECT p.name 
+                            FROM Product po 
+                            JOIN Package_Product pp ON po.product_id = pp.product_id
+                            JOIN Package p ON pp.package_id = p.package_id
+                            WHERE po.product_id = @id";
 
                         using (SqlCommand relatedCmd = new SqlCommand(query_related_package, connect))
                         {
@@ -129,7 +134,6 @@ namespace CheapDeals.comLTD
             }
         }
 
-
         private Image ResizeImage(Image img, int maxWidth, int maxHeight)
         {
             int originalWidth = img.Width;
@@ -149,54 +153,41 @@ namespace CheapDeals.comLTD
             return newImage;
         }
 
-        private void box_image_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void list_package_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Ensure there is a selected item
             if (list_package.SelectedIndex != -1)
             {
-                // Extract semester information from the selected item
                 string selected_package_name = list_package.SelectedItem.ToString();
 
-
-                // Retrieve semester_id from database based on nameSemester and year
-                /*try
-                {*/
                 string query = @"
-                        SELECT package_id
-                        FROM Package
-                        WHERE name = @name"
-                ;
+                    SELECT package_id
+                    FROM Package
+                    WHERE name = @name";
 
                 using (SqlCommand command = new SqlCommand(query, connect))
                 {
                     command.Parameters.AddWithValue("@name", selected_package_name);
 
+                    if (connect.State == ConnectionState.Closed)
+                    {
+                        connect.Open();
+                    };
 
-                    if (connect.State == ConnectionState.Closed) { connect.Open(); };
                     object result = command.ExecuteScalar();
 
                     if (result != null)
                     {
                         int package_id = Convert.ToInt32(result);
-
-                        // Load subjects for the selected semester
                         load_product_detail(package_id, "package");
                         lb_back.Visible = true;
                     }
                 }
-
             }
         }
 
         private void lb_back_Click(object sender, EventArgs e)
         {
             load_product_detail(product_id, "product");
-
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -207,36 +198,40 @@ namespace CheapDeals.comLTD
 
         private void product_detail_Load(object sender, EventArgs e)
         {
-
         }
 
         private void bt2_add_to_cart_Click(object sender, EventArgs e)
         {
             try
             {
-                // Collect the product details from the current form
                 string name = tb_name.Text;
                 string type = tb_type.Text;
                 string price = tb_price.Text;
                 string debutDate = tb_date.Text;
                 string description = tb_description.Text;
 
-                // Ensure the form is either newly created or already active
                 if (formAtc == null || formAtc.IsDisposed)
                 {
                     formAtc = new Form_atc(this);
                 }
 
-                formAtc.Show();
-
-                // Add the product details to the DataGridView in Form_atc
-                formAtc.AddProductDetail(name, type, price, debutDate, description);
+                if (formAtc != null)
+                {
+                    
+                    formAtc.AddProductDetail(name, type, price, debutDate, description);
+                    MessageBox.Show("Product added to cart!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Unable to access the cart form.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void bt_cart_Click(object sender, EventArgs e)
         {
@@ -246,7 +241,11 @@ namespace CheapDeals.comLTD
             }
 
             formAtc.Show();
+        }
 
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

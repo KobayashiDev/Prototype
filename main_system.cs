@@ -28,6 +28,7 @@ namespace CheapDeals.comLTD
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
             // Ensure the click is on a valid row
             if (e.RowIndex >= 0)
             {

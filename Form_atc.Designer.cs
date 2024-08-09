@@ -22,13 +22,19 @@
             this.debutDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Delete = new System.Windows.Forms.Button();
-            this.bt_buy_now = new System.Windows.Forms.Button();
-            this.lb_back = new System.Windows.Forms.Label();
+            this.bt_proceed = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.cheapDealsDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cheapDealsDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cartBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // cheapDealsDataSet
@@ -86,11 +92,11 @@
             this.price,
             this.debutDate,
             this.description});
-            this.dataGridView1.Location = new System.Drawing.Point(-2, 59);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 91);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(412, 408);
+            this.dataGridView1.Size = new System.Drawing.Size(289, 234);
             this.dataGridView1.TabIndex = 0;
             // 
             // name
@@ -125,50 +131,91 @@
             // 
             // Delete
             // 
-            this.Delete.Location = new System.Drawing.Point(12, 540);
+            this.Delete.BackColor = System.Drawing.Color.Firebrick;
+            this.Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Delete.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.Delete.Location = new System.Drawing.Point(27, 369);
             this.Delete.Name = "Delete";
-            this.Delete.Size = new System.Drawing.Size(106, 51);
+            this.Delete.Size = new System.Drawing.Size(76, 46);
             this.Delete.TabIndex = 1;
             this.Delete.Text = "Delete";
-            this.Delete.UseVisualStyleBackColor = true;
+            this.Delete.UseVisualStyleBackColor = false;
             this.Delete.Click += new System.EventHandler(this.Delete_Click);
             // 
-            // bt_buy_now
+            // bt_proceed
             // 
-            this.bt_buy_now.Location = new System.Drawing.Point(259, 540);
-            this.bt_buy_now.Name = "bt_buy_now";
-            this.bt_buy_now.Size = new System.Drawing.Size(106, 51);
-            this.bt_buy_now.TabIndex = 2;
-            this.bt_buy_now.Text = "Buy Now";
-            this.bt_buy_now.UseVisualStyleBackColor = true;
-            this.bt_buy_now.Click += new System.EventHandler(this.bt_buy_now_Click);
+            this.bt_proceed.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.bt_proceed.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_proceed.ForeColor = System.Drawing.Color.White;
+            this.bt_proceed.Location = new System.Drawing.Point(176, 369);
+            this.bt_proceed.Margin = new System.Windows.Forms.Padding(2);
+            this.bt_proceed.Name = "bt_proceed";
+            this.bt_proceed.Size = new System.Drawing.Size(76, 46);
+            this.bt_proceed.TabIndex = 9;
+            this.bt_proceed.Text = "Proceed";
+            this.bt_proceed.UseVisualStyleBackColor = false;
+            this.bt_proceed.Click += new System.EventHandler(this.bt_proceed_Click);
             // 
-            // lb_back
+            // panel1
             // 
-            this.lb_back.AutoSize = true;
-            this.lb_back.Location = new System.Drawing.Point(9, 26);
-            this.lb_back.Name = "lb_back";
-            this.lb_back.Size = new System.Drawing.Size(38, 16);
-            this.lb_back.TabIndex = 3;
-            this.lb_back.Text = "Back";
-            this.lb_back.Click += new System.EventHandler(this.lb_back_Click);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Location = new System.Drawing.Point(82, 26);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(149, 50);
+            this.panel1.TabIndex = 10;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(44, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 21);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Your Cart";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::CheapDeals.comLTD.Properties.Resources.cart12;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 14);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(35, 33);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox5.Image = global::CheapDeals.comLTD.Properties.Resources.icons8_left_arrow_20;
+            this.pictureBox5.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(22, 20);
+            this.pictureBox5.TabIndex = 11;
+            this.pictureBox5.TabStop = false;
+            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
             // 
             // Form_atc
             // 
-            this.ClientSize = new System.Drawing.Size(410, 751);
-            this.Controls.Add(this.lb_back);
-            this.Controls.Add(this.bt_buy_now);
+            this.ClientSize = new System.Drawing.Size(290, 533);
+            this.Controls.Add(this.pictureBox5);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.bt_proceed);
             this.Controls.Add(this.Delete);
             this.Controls.Add(this.dataGridView1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form_atc";
-            this.Load += new System.EventHandler(this.Form_atc_Load_1);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             ((System.ComponentModel.ISupportInitialize)(this.cheapDealsDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cheapDealsDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cartBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -187,7 +234,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn debutDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn description;
         private System.Windows.Forms.Button Delete;
-        private System.Windows.Forms.Button bt_buy_now;
-        private System.Windows.Forms.Label lb_back;
+        private System.Windows.Forms.Button bt_proceed;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox5;
     }
 }

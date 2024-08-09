@@ -26,6 +26,7 @@ namespace CheapDeals.comLTD
                 Form_OrderConfirm form_OrderConfirm = new Form_OrderConfirm();
                 form_OrderConfirm.ShowDialog();
             }
+            this.Hide();
         }
 
         private bool ValidateCardDetails(string cardNumber, string expirationDate)
