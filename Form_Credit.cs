@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Text;
+using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -9,28 +10,46 @@ namespace CheapDeals.comLTD
     public partial class Form_Credit : Form
     {
         private DataTable cartTable;
+
         public Form_Credit()
         {
             InitializeComponent();
-            
         }
+
 
         private void bt_proceed_Click_1(object sender, EventArgs e)
         {
-            string cardNumber = textBox1.Text.Trim();
-            string expirationDate = textBox4.Text.Trim();
-
-            if (ValidateCardDetails(cardNumber, expirationDate))
+            try
             {
-                string encryptedCardNumber = SimpleEncrypt(cardNumber);
+                string cardNumber = textBox1.Text.Trim();
+                string expirationDate = textBox4.Text.Trim(); // Ensure textBox4 contains expiration date
 
-                // Process the "encrypted" card number (e.g., save to database, send to payment gateway, etc.)
-                MessageBox.Show("Payment processed successfully!\nEncrypted Card Number: " + encryptedCardNumber);
-                Form_Billing form_Billing = new Form_Billing(cartTable);
-                form_Billing.ShowDialog();
+                if (ValidateCardDetails(cardNumber, expirationDate))
+                {
+                    string encryptedCardNumber = SimpleEncrypt(cardNumber);
+
+                    // Process the "encrypted" card number
+                    MessageBox.Show("Payment processed successfully!\nEncrypted Card Number: " + encryptedCardNumber);
+
+                    // Show the billing form with the cart details
+                    Form_Billing form_Billing = new Form_Billing(cartTable);
+                    form_Billing.ShowDialog();
+
+                    // Hide the current form
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid card details. Please check and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-            this.Hide();
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
+
 
         private bool ValidateCardDetails(string cardNumber, string expirationDate)
         {
@@ -116,6 +135,47 @@ namespace CheapDeals.comLTD
         private void pictureBox5_Click_1(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Form_Credit_Load_1(object sender, EventArgs e)
+        {
+            try
+            {
+                // Load user details from 'DataUser.txt'
+                string[] userLines = File.ReadAllLines("DataUser.txt");
+
+                if (userLines.Length > 0)
+                {
+                    string[] details = userLines[0].Split(',');
+                    if (details.Length >= 5)
+                    {
+                        string name = details[0];
+                        string address = details[1];
+                        string email = details[2];
+                        string phone = details[3];
+                        string card = details[4];
+
+                        // Display the card number in textBox1
+                        textBox1.Text = card;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Incorrect format in DataUser.txt.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No user data found in DataUser.txt.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show("DataUser.txt file not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
