@@ -7,12 +7,14 @@ namespace CheapDeals.comLTD
     public partial class Form_OrderSummary : Form
     {
         private Form_atc previousForm; // Store reference to previous form
+        private DataTable cartTable; // CartTable to store order details
 
         public Form_OrderSummary(Form_atc formAtc)
         {
             InitializeComponent();
             SetupDataGridView(); // Setup DataGridView when form is initialized
             previousForm = formAtc; // Initialize the reference
+            cartTable = formAtc.cartTable; // Initialize cartTable with the data from previous form
         }
 
         private void Form_OrderSummary_Load(object sender, EventArgs e)
@@ -63,26 +65,19 @@ namespace CheapDeals.comLTD
                 if (rb_phone.Checked)
                 {
                     MessageBox.Show("Phone payment option selected. Proceeding with phone payment...");
-                    
-
                 }
                 else if (rb_credit.Checked)
                 {
                     MessageBox.Show("Credit card payment option selected. Proceeding with credit card payment...");
 
-                    // Pass the cart data to Form_Billing
-                    Form_Credit form_Credit = new Form_Credit();
+                    // Pass the cart data to Form_Credit
+                    Form_Credit form_Credit = new Form_Credit(cartTable); // Pass cartTable to Form_Credit
                     form_Credit.ShowDialog();
                 }
                 else
                 {
                     MessageBox.Show("Please select a payment option.", "No Payment Option Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-
-                // Pass the DataTable to Form_Billing and show it
-                Form_Billing formBilling = new Form_Billing(previousForm.cartTable); // Assuming CartTable holds the DataTable
-                formBilling.ShowDialog();
-
                 this.Hide();
             }
             catch (Exception ex)
@@ -90,7 +85,5 @@ namespace CheapDeals.comLTD
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
     }
 }

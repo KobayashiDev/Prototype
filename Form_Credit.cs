@@ -11,10 +11,12 @@ namespace CheapDeals.comLTD
     {
         private DataTable cartTable;
 
-        public Form_Credit()
+        public Form_Credit(DataTable cart)
         {
             InitializeComponent();
+            this.cartTable = cart ?? throw new ArgumentNullException(nameof(cart), "Cart data cannot be null.");
         }
+
 
 
         private void bt_proceed_Click_1(object sender, EventArgs e)

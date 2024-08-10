@@ -118,6 +118,8 @@ namespace CheapDeals.comLTD
                 {
                     formOrderSummary.LoadOrderDetails(cartDetails);
                     formOrderSummary.ShowDialog(); // Show the form as a modal dialog
+
+                    this.Hide();
                 }
             }
             else

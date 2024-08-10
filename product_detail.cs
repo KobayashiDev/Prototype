@@ -192,7 +192,7 @@ namespace CheapDeals.comLTD
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Form_Credit form_Credit = new Form_Credit();
+            Form_Credit form_Credit = new Form_Credit(cartTable);
             form_Credit.ShowDialog();
         }
 
