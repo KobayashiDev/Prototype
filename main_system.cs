@@ -58,11 +58,11 @@ namespace CheapDeals.comLTD
 
                 if (isPackage)
                 {
-                    query = "SELECT package_id AS id, name AS item_name, 'package' AS item_type, price AS item_price, NULL AS item_image FROM Package";
+                    query = "SELECT package_id AS id, name AS item_name, 'package' AS item_type, price AS item_price, NULL AS item_image, free_minute, free_sms, free_gb FROM Package";
                 }
                 else
                 {
-                    query = "SELECT product_id AS id, name AS item_name, type AS item_type, price AS item_price, image AS item_image FROM Product";
+                    query = "SELECT product_id , name , type , price , image  FROM Product";
                 }
 
                 // Build the filter string
@@ -102,21 +102,32 @@ namespace CheapDeals.comLTD
                     string name = reader.GetString(1);
                     string type = reader.GetString(2);
                     double price = reader.GetDouble(3);
-                    string imagePath = reader.IsDBNull(4) ? null : reader.GetString(4);
 
-                    // Convert image path to Image object
-                    Image itemImage = null;
-                    if (!string.IsNullOrEmpty(imagePath) && File.Exists(imagePath))
+                    if (isPackage)
                     {
-                        using (var stream = new FileStream(imagePath, FileMode.Open, FileAccess.Read))
-                        {
-                            Image originalImage = Image.FromStream(stream);
-                            itemImage = ResizeImage(originalImage, 50, 50);
-                        }
-                    }
+                        int freeMinute = reader.GetInt32(5);
+                        int freeSms = reader.GetInt32(6);
+                        int freeGb = reader.GetInt32(7);
 
-                    // Add a new row with the item details
-                    dataGridView1.Rows.Add(id, name, type, price, itemImage);
+                        dataGridView1.Rows.Add(id, name, type, price, freeMinute, freeSms, freeGb, null);
+                    }
+                    else
+                    {
+                        string imagePath = reader.IsDBNull(4) ? null : reader.GetString(4);
+
+                        // Convert image path to Image object
+                        Image itemImage = null;
+                        if (!string.IsNullOrEmpty(imagePath) && File.Exists(imagePath))
+                        {
+                            using (var stream = new FileStream(imagePath, FileMode.Open, FileAccess.Read))
+                            {
+                                Image originalImage = Image.FromStream(stream);
+                                itemImage = ResizeImage(originalImage, 50, 50);
+                            }
+                        }
+
+                        dataGridView1.Rows.Add(id, name, type, price, itemImage);
+                    }
                 }
 
                 reader.Close();
@@ -130,6 +141,7 @@ namespace CheapDeals.comLTD
                 connect.Close();
             }
         }
+
 
 
         private Image ResizeImage(Image img, int width, int height)
@@ -166,6 +178,9 @@ namespace CheapDeals.comLTD
             if (cb_mobile.Checked)
             {
                 typeFilter += "type = 'mobile'";
+                free_gb.Visible = false;
+                free_minute.Visible = false;
+                free_sms.Visible = false;
             }
             if (cb_tablet.Checked)
             {
@@ -174,6 +189,9 @@ namespace CheapDeals.comLTD
                     typeFilter += " OR ";
                 }
                 typeFilter += "type = 'tablet'";
+                free_gb.Visible = false;
+                free_minute.Visible = false;
+                free_sms.Visible = false;
             }
             if (cb_rauter.Checked)
             {
@@ -182,6 +200,21 @@ namespace CheapDeals.comLTD
                     typeFilter += " OR ";
                 }
                 typeFilter += "type = 'rauter'";
+                free_gb.Visible = false;
+                free_minute.Visible = false;
+                free_sms.Visible = false;
+            }
+            if (cb_package.Checked)
+            {
+                free_gb.Visible = true;
+                free_minute.Visible = true;
+                free_sms.Visible = true;
+            }
+            if (!cb_package.Checked)
+            {
+                free_gb.Visible = false;
+                free_minute.Visible = false;
+                free_sms.Visible = false;
             }
 
             load_product(typeFilter, searchText, isPackage);

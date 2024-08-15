@@ -30,6 +30,10 @@ namespace CheapDeals.comLTD
             dataGridViewOrder.Columns.Add("Type", "Type");
             dataGridViewOrder.Columns.Add("Price", "Price");
             dataGridViewOrder.Columns.Add("DebutDate", "Debut Date");
+            dataGridViewOrder.Columns.Add("FreeMinute", "Free Minute");
+            dataGridViewOrder.Columns.Add("FreeSMS", "Free SMS");
+            dataGridViewOrder.Columns.Add("FreeGB", "Free GB");
+            dataGridViewOrder.Columns.Add("Request", "Request");
             dataGridViewOrder.Columns.Add("Description", "Description");
         }
 
@@ -38,7 +42,8 @@ namespace CheapDeals.comLTD
             dataGridViewOrder.Rows.Clear(); // Clear existing rows
             foreach (DataRow row in orderDetails.Rows)
             {
-                dataGridViewOrder.Rows.Add(row["Name"], row["Type"], row["Price"], row["DebutDate"], row["Description"]);
+                dataGridViewOrder.Rows.Add(row["Name"], row["Type"], row["Price"], row["DebutDate"], row["Description"], row["FreeMinute"], 
+                    row["FreeSMS"], row["FreeGB"], row["Request"]);
             }
         }
 
@@ -65,6 +70,8 @@ namespace CheapDeals.comLTD
                 if (rb_phone.Checked)
                 {
                     MessageBox.Show("Phone payment option selected. Proceeding with phone payment...");
+                    Form_Billing form_Billing = new Form_Billing(cartTable);
+                    form_Billing.ShowDialog();
                 }
                 else if (rb_credit.Checked)
                 {

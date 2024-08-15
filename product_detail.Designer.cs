@@ -28,9 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tb_request = new System.Windows.Forms.RichTextBox();
+            this.lb_request = new System.Windows.Forms.Label();
+            this.tb_sms = new System.Windows.Forms.TextBox();
+            this.tb_gb = new System.Windows.Forms.TextBox();
+            this.tb_freeminute = new System.Windows.Forms.TextBox();
+            this.lb_gb = new System.Windows.Forms.Label();
+            this.lb_sms = new System.Windows.Forms.Label();
+            this.lb_minute = new System.Windows.Forms.Label();
             this.tb_description = new System.Windows.Forms.RichTextBox();
             this.tb_date = new System.Windows.Forms.TextBox();
             this.tb_price = new System.Windows.Forms.TextBox();
@@ -46,10 +55,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.list_package = new System.Windows.Forms.ListBox();
             this.lb_back = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.bt2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.cart = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.box_image)).BeginInit();
             this.SuspendLayout();
@@ -81,6 +91,14 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel1.Controls.Add(this.tb_request);
+            this.panel1.Controls.Add(this.lb_request);
+            this.panel1.Controls.Add(this.tb_sms);
+            this.panel1.Controls.Add(this.tb_gb);
+            this.panel1.Controls.Add(this.tb_freeminute);
+            this.panel1.Controls.Add(this.lb_gb);
+            this.panel1.Controls.Add(this.lb_sms);
+            this.panel1.Controls.Add(this.lb_minute);
             this.panel1.Controls.Add(this.tb_description);
             this.panel1.Controls.Add(this.tb_date);
             this.panel1.Controls.Add(this.tb_price);
@@ -96,15 +114,81 @@
             this.panel1.Location = new System.Drawing.Point(12, 37);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(298, 367);
+            this.panel1.Size = new System.Drawing.Size(298, 431);
             this.panel1.TabIndex = 2;
+            // 
+            // tb_request
+            // 
+            this.tb_request.Location = new System.Drawing.Point(97, 391);
+            this.tb_request.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_request.Name = "tb_request";
+            this.tb_request.Size = new System.Drawing.Size(186, 34);
+            this.tb_request.TabIndex = 19;
+            this.tb_request.Text = "";
+            // 
+            // lb_request
+            // 
+            this.lb_request.AutoSize = true;
+            this.lb_request.Location = new System.Drawing.Point(25, 391);
+            this.lb_request.Name = "lb_request";
+            this.lb_request.Size = new System.Drawing.Size(53, 13);
+            this.lb_request.TabIndex = 18;
+            this.lb_request.Text = "Request: ";
+            // 
+            // tb_sms
+            // 
+            this.tb_sms.Location = new System.Drawing.Point(97, 340);
+            this.tb_sms.Name = "tb_sms";
+            this.tb_sms.Size = new System.Drawing.Size(100, 20);
+            this.tb_sms.TabIndex = 17;
+            // 
+            // tb_gb
+            // 
+            this.tb_gb.Location = new System.Drawing.Point(97, 366);
+            this.tb_gb.Name = "tb_gb";
+            this.tb_gb.Size = new System.Drawing.Size(100, 20);
+            this.tb_gb.TabIndex = 16;
+            // 
+            // tb_freeminute
+            // 
+            this.tb_freeminute.Location = new System.Drawing.Point(97, 314);
+            this.tb_freeminute.Name = "tb_freeminute";
+            this.tb_freeminute.Size = new System.Drawing.Size(100, 20);
+            this.tb_freeminute.TabIndex = 15;
+            // 
+            // lb_gb
+            // 
+            this.lb_gb.AutoSize = true;
+            this.lb_gb.Location = new System.Drawing.Point(25, 368);
+            this.lb_gb.Name = "lb_gb";
+            this.lb_gb.Size = new System.Drawing.Size(49, 13);
+            this.lb_gb.TabIndex = 14;
+            this.lb_gb.Text = "Free GB:";
+            // 
+            // lb_sms
+            // 
+            this.lb_sms.AutoSize = true;
+            this.lb_sms.Location = new System.Drawing.Point(25, 342);
+            this.lb_sms.Name = "lb_sms";
+            this.lb_sms.Size = new System.Drawing.Size(57, 13);
+            this.lb_sms.TabIndex = 13;
+            this.lb_sms.Text = "Free SMS:";
+            // 
+            // lb_minute
+            // 
+            this.lb_minute.AutoSize = true;
+            this.lb_minute.Location = new System.Drawing.Point(25, 314);
+            this.lb_minute.Name = "lb_minute";
+            this.lb_minute.Size = new System.Drawing.Size(66, 13);
+            this.lb_minute.TabIndex = 12;
+            this.lb_minute.Text = "Free Minute:";
             // 
             // tb_description
             // 
             this.tb_description.Location = new System.Drawing.Point(88, 267);
             this.tb_description.Margin = new System.Windows.Forms.Padding(2);
             this.tb_description.Name = "tb_description";
-            this.tb_description.Size = new System.Drawing.Size(186, 76);
+            this.tb_description.Size = new System.Drawing.Size(186, 34);
             this.tb_description.TabIndex = 11;
             this.tb_description.Text = "";
             // 
@@ -213,7 +297,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(9, 407);
+            this.label3.Location = new System.Drawing.Point(8, 470);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(108, 17);
@@ -223,9 +307,9 @@
             // list_package
             // 
             this.list_package.FormattingEnabled = true;
-            this.list_package.Location = new System.Drawing.Point(12, 427);
+            this.list_package.Location = new System.Drawing.Point(11, 502);
             this.list_package.Name = "list_package";
-            this.list_package.Size = new System.Drawing.Size(298, 160);
+            this.list_package.Size = new System.Drawing.Size(298, 43);
             this.list_package.TabIndex = 3;
             this.list_package.SelectedIndexChanged += new System.EventHandler(this.list_package_SelectedIndexChanged);
             // 
@@ -239,18 +323,6 @@
             this.lb_back.TabIndex = 4;
             this.lb_back.Text = "Turn Back";
             this.lb_back.Click += new System.EventHandler(this.lb_back_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(12, 590);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(72, 46);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Chua biet";
-            this.button1.UseVisualStyleBackColor = false;
             // 
             // bt2
             // 
@@ -289,6 +361,16 @@
             this.cart.UseVisualStyleBackColor = true;
             this.cart.Click += new System.EventHandler(this.bt_cart_Click);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
+            // 
             // product_detail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -297,7 +379,6 @@
             this.Controls.Add(this.cart);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.bt2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.lb_back);
             this.Controls.Add(this.list_package);
             this.Controls.Add(this.label3);
@@ -306,7 +387,7 @@
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "product_detail";
-            this.Size = new System.Drawing.Size(320, 639);
+            this.Size = new System.Drawing.Size(320, 644);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.box_image)).EndInit();
@@ -335,9 +416,18 @@
         private System.Windows.Forms.RichTextBox tb_description;
         private System.Windows.Forms.ListBox list_package;
         private System.Windows.Forms.Label lb_back;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button bt2;
         private System.Windows.Forms.Button cart;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label lb_sms;
+        private System.Windows.Forms.Label lb_minute;
+        private System.Windows.Forms.TextBox tb_sms;
+        private System.Windows.Forms.TextBox tb_gb;
+        private System.Windows.Forms.TextBox tb_freeminute;
+        private System.Windows.Forms.Label lb_gb;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Label lb_request;
+        private System.Windows.Forms.RichTextBox tb_request;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
     }
 }

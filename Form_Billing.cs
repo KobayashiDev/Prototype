@@ -62,7 +62,12 @@ namespace CheapDeals.comLTD
                 lb_bill_details.Items.Add($"Type: {row["Type"]}");
                 lb_bill_details.Items.Add($"Price: {row["Price"]}");
                 lb_bill_details.Items.Add($"Debut Date: {row["DebutDate"]}");
+                lb_bill_details.Items.Add($"FreeSMS: {row["FreeSMS"]}");
+                lb_bill_details.Items.Add($"FreeMinute: {row["FreeMinute"]}");
+                lb_bill_details.Items.Add($"FreeGB :{row["FreeGB"]}");
+                lb_bill_details.Items.Add($"Request: {row["Request"]}");
                 lb_bill_details.Items.Add($"Description: {row["Description"]}");
+
                 lb_bill_details.Items.Add("--------------------");  // Separator for readability
             }
         }

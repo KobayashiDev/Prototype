@@ -31,6 +31,10 @@ namespace CheapDeals.comLTD
             cartTable.Columns.Add("Type", typeof(string));
             cartTable.Columns.Add("Price", typeof(string));
             cartTable.Columns.Add("DebutDate", typeof(string));
+            cartTable.Columns.Add("FreeMinute", typeof(int));
+            cartTable.Columns.Add("FreeSMS", typeof(int));
+            cartTable.Columns.Add("FreeGB", typeof(int));
+            cartTable.Columns.Add("Request", typeof(string));
             cartTable.Columns.Add("Description", typeof(string));
         }
 
@@ -52,10 +56,20 @@ namespace CheapDeals.comLTD
 
                     if (type == "package")
                     {
-                        query = "SELECT name, 'package' AS type, price, debut_date, description, NULL AS image FROM Package WHERE package_id = @id";
+                        /*SELECT package_id AS id, name AS item_name, 'package' AS item_type, price AS item_price, NULL AS item_image, free_minute, free_sms, free_gb FROM Package*/
+                        query = "SELECT name, 'package' AS type, price, debut_date, description, NULL AS image, free_minute, free_sms, free_gb, request FROM Package WHERE package_id = @id";
                         list_package.Visible = false;
                         label3.Visible = false;
                         label2.Text = "Package Detail";
+                      
+                        tb_freeminute.Visible = true;
+                        tb_sms.Visible = true;
+                        tb_gb.Visible = true;
+                        lb_minute.Visible = true;
+                        lb_sms.Visible = true;
+                        lb_gb.Visible = true;
+                        lb_request.Visible = true;
+                        tb_request.Visible = true;
                     }
                     else
                     {
@@ -63,6 +77,15 @@ namespace CheapDeals.comLTD
                         list_package.Visible = true;
                         label3.Visible = true;
                         lb_back.Visible = false;
+                       
+                        tb_freeminute.Visible = false;
+                        tb_sms.Visible = false;
+                        tb_gb.Visible = false;
+                        lb_minute.Visible = false;
+                        lb_sms.Visible = false;
+                        lb_gb.Visible = false;
+                        lb_request.Visible = false;
+                        tb_request.Visible = false;
                     }
 
                     using (SqlCommand cmd = new SqlCommand(query, connect))
@@ -78,6 +101,15 @@ namespace CheapDeals.comLTD
                                 tb_price.Text = reader["price"].ToString();
                                 tb_date.Text = reader["debut_date"].ToString();
                                 tb_description.Text = reader["description"].ToString();
+                                if(type == "package") {
+                                    tb_freeminute.Text = reader.GetInt32(reader.GetOrdinal("free_minute")).ToString();
+                                    tb_sms.Text = reader.GetInt32(reader.GetOrdinal("free_sms")).ToString();
+                                    tb_gb.Text = reader.GetInt32(reader.GetOrdinal("free_gb")).ToString();
+                                    tb_request.Text = reader["request"].ToString();
+                                }
+                                
+                                
+                                
 
                                 if (type != "package")
                                 {
@@ -189,12 +221,31 @@ namespace CheapDeals.comLTD
         {
             load_product_detail(product_id, "product");
         }
+        public DataTable GetCartDetails()
+        {
+            return cartTable.Copy(); // Return a copy of the cart data
+        }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Form_Credit form_Credit = new Form_Credit(cartTable);
-            form_Credit.ShowDialog();
+            AddToCart();
+            try
+            {
+                
+                    if (formAtc == null || formAtc.IsDisposed)
+                    {
+                        formAtc = new Form_atc(this);
+                    }
+
+                    formAtc.Show();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
         private void product_detail_Load(object sender, EventArgs e)
         {
@@ -202,13 +253,23 @@ namespace CheapDeals.comLTD
 
         private void bt2_add_to_cart_Click(object sender, EventArgs e)
         {
+            AddToCart();
+        }
+
+        private void AddToCart()
+        {
             try
             {
                 string name = tb_name.Text;
                 string type = tb_type.Text;
                 string price = tb_price.Text;
                 string debutDate = tb_date.Text;
+                int freeMinute = tb_freeminute.Text == "" ? 0 : Convert.ToInt32(tb_freeminute.Text);
+                int freeSMS = tb_sms.Text == "" ? 0 : Convert.ToInt32(tb_sms.Text);
+                int freeGB = tb_gb.Text == "" ? 0 : Convert.ToInt32(tb_gb.Text);
+                string request = tb_request.Text;
                 string description = tb_description.Text;
+
 
                 if (formAtc == null || formAtc.IsDisposed)
                 {
@@ -217,8 +278,8 @@ namespace CheapDeals.comLTD
 
                 if (formAtc != null)
                 {
-                    
-                    formAtc.AddProductDetail(name, type, price, debutDate, description);
+
+                    formAtc.AddProductDetail(name, type, price, debutDate, freeMinute, freeSMS, freeGB, request, description);
                     MessageBox.Show("Product added to cart!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -231,8 +292,6 @@ namespace CheapDeals.comLTD
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
         private void bt_cart_Click(object sender, EventArgs e)
         {
             if (formAtc == null || formAtc.IsDisposed)
@@ -247,5 +306,7 @@ namespace CheapDeals.comLTD
         {
             this.Hide();
         }
+
+        
     }
 }
