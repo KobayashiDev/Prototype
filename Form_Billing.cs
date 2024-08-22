@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Data;
 using System.IO;
+using System.Net.Mail;
+using System.Net;
+using System.Text;
 using System.Windows.Forms;
 
 namespace CheapDeals.comLTD
@@ -28,8 +31,8 @@ namespace CheapDeals.comLTD
                     if (details.Length >= 5)
                     {
                         string name = details[0];
-                        string address = details[1];
-                        string email = details[2];
+                        string address = details[2];
+                        string email = details[1];
                         string phone = details[3];
                         string card = details[4];
 
@@ -84,10 +87,97 @@ namespace CheapDeals.comLTD
 
         private void bt_proceed_Click(object sender, EventArgs e)
         {
+            // Lấy và lọc nội dung từ ListBox theo từ khóa
+            string filteredBillDetails = GetFilteredListBoxItems();
+
+            // Kiểm tra nếu nội dung không rỗng
+            if (string.IsNullOrEmpty(filteredBillDetails))
+            {
+                MessageBox.Show("No relevant billing details to send.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            SendEmail(filteredBillDetails);
+
             Form_OrderConfirm form_OrderConfirm = new Form_OrderConfirm();
             form_OrderConfirm.ShowDialog();
 
             this.Hide();
         }
+
+        private string GetFilteredListBoxItems()
+        {
+            StringBuilder sb = new StringBuilder();
+            bool lastWasProductNameOrRequest = false;
+
+            // Duyệt qua tất cả các mục trong ListBox
+            foreach (var item in lb_bill_details.Items)
+            {
+                string itemText = item.ToString();
+
+                // Kiểm tra nếu dòng chứa cả "Product Name" hoặc "Request"
+                if (itemText.Contains("Product Name") || itemText.Contains("Request") || itemText.Contains("Name") || itemText.Contains("Email") || itemText.Contains("Phone"))
+                {
+                    // Thêm một dòng trắng nếu dòng trước đó cũng chứa "Product Name" hoặc "Request"
+                    if (lastWasProductNameOrRequest)
+                    {
+                        sb.AppendLine(); // Thêm một dòng trắng để phân cách
+                    }
+
+                    sb.AppendLine(itemText);
+                    lastWasProductNameOrRequest = true; // Đánh dấu dòng hiện tại là "Product Name" hoặc "Request"
+                }
+                else
+                {
+                    lastWasProductNameOrRequest = false; // Đánh dấu dòng hiện tại không phải là "Product Name" hoặc "Request"
+                }
+            }
+
+            return sb.ToString();
+        }
+
+
+
+
+
+        private void SendEmail(string billDetails)
+        {
+            try
+            {
+                MailMessage mail = new MailMessage
+                {
+                    From = new MailAddress(UserSession.CurrentUserEmail), // Địa chỉ email của người gửi
+                    Subject = "Customer request",
+                    Body = billDetails,
+                    IsBodyHtml = false // Đảm bảo nội dung email được gửi dưới dạng Plain Text
+                };
+
+                // Địa chỉ email người nhận
+                mail.To.Add("doantheduong150902004@gmail.com");
+
+                // Cấu hình SMTP server
+                SmtpClient smtpServer = new SmtpClient("smtp.gmail.com")
+                {
+                    Port = 587,
+                    Credentials = new NetworkCredential("trunghack999@gmail.com", "qdch rbza dwzy ottt"),
+                    EnableSsl = true
+                };
+
+                // Gửi email
+                smtpServer.Send(mail);
+
+                MessageBox.Show("Email sent successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to send email: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+
+
+
     }
 }

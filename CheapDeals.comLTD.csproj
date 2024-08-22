@@ -148,6 +148,7 @@
     <Compile Include="register_login\reset_password.Designer.cs">
       <DependentUpon>reset_password.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserSessions.cs" />
     <EmbeddedResource Include="Form_atc.resx">
       <DependentUpon>Form_atc.cs</DependentUpon>
     </EmbeddedResource>

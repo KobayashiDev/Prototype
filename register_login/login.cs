@@ -102,10 +102,10 @@ namespace CheapDeals.comLTD
 
         private void btn_signin_Click(object sender, EventArgs e)
         {
-            string username = tb_username.Text;
+            string username = tb_username.Text.Trim();
             string password = tb_password.Text;
 
-            if (username == "" || password == "")
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Please enter username and password", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -125,9 +125,12 @@ namespace CheapDeals.comLTD
                         // Hash the input password to compare with the stored hashed password
                         string inputHashedPassword = HashPassword(password);
 
-                        if (userDetails[6] == username.Trim() && userDetails[7] == inputHashedPassword)
+                        if (userDetails[6] == username && userDetails[7] == inputHashedPassword)
                         {
                             correct_account = true;
+                            // Save user information in session
+                            UserSession.CurrentUserEmail = userDetails[1]; // Assuming email is the second field
+                            UserSession.CurrentUsername = username; // Add this property if needed
                             break;
                         }
                     }
@@ -139,7 +142,8 @@ namespace CheapDeals.comLTD
                     main_system main = new main_system();
                     main.Show();
                     this.Hide();
-                    // Proceed to the next form or main application
+
+                    // Handle credentials
                     if (cb_remember.Checked)
                     {
                         SaveCredentials(username, password);

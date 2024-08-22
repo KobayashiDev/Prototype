@@ -146,21 +146,25 @@
             // free_minute
             // 
             this.free_minute.HeaderText = "Free Minute";
+            this.free_minute.MinimumWidth = 6;
             this.free_minute.Name = "free_minute";
             // 
             // free_sms
             // 
             this.free_sms.HeaderText = "Free SMS";
+            this.free_sms.MinimumWidth = 6;
             this.free_sms.Name = "free_sms";
             // 
             // free_gb
             // 
             this.free_gb.HeaderText = "Free GB ";
+            this.free_gb.MinimumWidth = 6;
             this.free_gb.Name = "free_gb";
             // 
             // request
             // 
             this.request.HeaderText = "Request";
+            this.request.MinimumWidth = 6;
             this.request.Name = "request";
             // 
             // description
@@ -211,7 +215,7 @@
             this.label1.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(44, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 21);
+            this.label1.Size = new System.Drawing.Size(100, 28);
             this.label1.TabIndex = 1;
             this.label1.Text = "Your Cart";
             // 
@@ -254,7 +258,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(20, 333);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 13);
+            this.label2.Size = new System.Drawing.Size(80, 16);
             this.label2.TabIndex = 13;
             this.label2.Text = "Free Minute:";
             // 
@@ -262,14 +266,14 @@
             // 
             this.cart_freeminute.Location = new System.Drawing.Point(89, 329);
             this.cart_freeminute.Name = "cart_freeminute";
-            this.cart_freeminute.Size = new System.Drawing.Size(155, 20);
+            this.cart_freeminute.Size = new System.Drawing.Size(155, 22);
             this.cart_freeminute.TabIndex = 14;
             // 
             // cart_freesms
             // 
             this.cart_freesms.Location = new System.Drawing.Point(89, 355);
             this.cart_freesms.Name = "cart_freesms";
-            this.cart_freesms.Size = new System.Drawing.Size(155, 20);
+            this.cart_freesms.Size = new System.Drawing.Size(155, 22);
             this.cart_freesms.TabIndex = 16;
             // 
             // label3
@@ -277,7 +281,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(30, 359);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 13);
+            this.label3.Size = new System.Drawing.Size(70, 16);
             this.label3.TabIndex = 15;
             this.label3.Text = "Free SMS:";
             // 
@@ -285,7 +289,7 @@
             // 
             this.cart_freegb.Location = new System.Drawing.Point(89, 381);
             this.cart_freegb.Name = "cart_freegb";
-            this.cart_freegb.Size = new System.Drawing.Size(155, 20);
+            this.cart_freegb.Size = new System.Drawing.Size(155, 22);
             this.cart_freegb.TabIndex = 18;
             // 
             // label4
@@ -293,7 +297,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(38, 385);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 13);
+            this.label4.Size = new System.Drawing.Size(60, 16);
             this.label4.TabIndex = 17;
             this.label4.Text = "Free GB:";
             // 
@@ -301,7 +305,7 @@
             // 
             this.cart_request.Location = new System.Drawing.Point(89, 407);
             this.cart_request.Name = "cart_request";
-            this.cart_request.Size = new System.Drawing.Size(155, 20);
+            this.cart_request.Size = new System.Drawing.Size(155, 22);
             this.cart_request.TabIndex = 20;
             // 
             // label5
@@ -309,7 +313,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(37, 411);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(50, 13);
+            this.label5.Size = new System.Drawing.Size(61, 16);
             this.label5.TabIndex = 19;
             this.label5.Text = "Request:";
             // 
@@ -317,7 +321,7 @@
             // 
             this.cart_description.Location = new System.Drawing.Point(89, 433);
             this.cart_description.Name = "cart_description";
-            this.cart_description.Size = new System.Drawing.Size(155, 20);
+            this.cart_description.Size = new System.Drawing.Size(155, 22);
             this.cart_description.TabIndex = 22;
             // 
             // label6
@@ -325,13 +329,13 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(24, 437);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(63, 13);
+            this.label6.Size = new System.Drawing.Size(78, 16);
             this.label6.TabIndex = 21;
             this.label6.Text = "Description:";
             // 
             // Form_atc
             // 
-            this.ClientSize = new System.Drawing.Size(298, 533);
+            this.ClientSize = new System.Drawing.Size(328, 611);
             this.Controls.Add(this.cart_description);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cart_request);
